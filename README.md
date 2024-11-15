@@ -8,3 +8,5 @@ Exemplo (30 usuários simultâneos, 1200 requisições):
 ```bash
 loadtest -n 1200 -c 30 -k http://localhost:5251/contador
 ```
+
+Documentação sobre a classe Lock: https://learn.microsoft.com/en-us/dotnet/api/system.threading.lock?view=net-9.0
