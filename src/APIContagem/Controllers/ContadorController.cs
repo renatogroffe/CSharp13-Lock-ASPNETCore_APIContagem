@@ -7,7 +7,7 @@ namespace APIContagem.Controllers;
 [Route("[controller]")]
 public class ContadorController : ControllerBase
 {
-    private static Lock _ContagemLock = new();
+    private readonly static Lock ContagemLock = new();
 
     private readonly ILogger<ContadorController> _logger;
     private readonly IConfiguration _configuration;
@@ -22,10 +22,11 @@ public class ContadorController : ControllerBase
         _contador = contador;
     }
 
+    [HttpGet]
     public ResultadoContador Get()
     {
         int valorAtualContador;
-        lock (_ContagemLock)
+        lock (ContagemLock)
         {
             _contador.Incrementar();
             valorAtualContador = _contador.ValorAtual;
